@@ -36,7 +36,7 @@ public class myGrid : MonoBehaviour { //el objeto en la escena que se va encarga
 
 				bool isTransitable = true;
 				for (int k = 0; k < colliders.Length; k++) {
-					if (colliders [k].tag == "PIEZA") {
+					if (colliders [k].tag == "Limite") {
 						isTransitable = false;
 						Debug.Log (i +" "+k);
 					}
@@ -67,6 +67,7 @@ public class myGrid : MonoBehaviour { //el objeto en la escena que se va encarga
 					Vector3 scale = new Vector3 (node_size, node_size, node_size);
 
 					Gizmos.DrawWireCube (grid[i,j].worldPosition, scale);
+
 				}
 			}
 		}
@@ -131,13 +132,9 @@ public class myGrid : MonoBehaviour { //el objeto en la escena que se va encarga
 	public Node GetNeighboursDown(Node node)
 	{
 		Node neighbourd = GetNode (node.gridPositionX, node.gridPositionY - 1);
+		//print (neighbourd);
 		return neighbourd;
 	}
 		
 }
 
-/*public class Node //normalmente las clases se hacen en otros scripts en este caso es pequeña y la podemos dejar aqui
-{
-
-//al final el profe lo ha hehco x separado
-}*/

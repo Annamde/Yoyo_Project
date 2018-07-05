@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 50923905285501890}
   - component: {fileID: 232047525580294160}
   - component: {fileID: 233596528791065528}
+  - component: {fileID: 95484411199466404}
   m_Layer: 0
   m_Name: Yoyo
   m_TagString: Untagged
@@ -64,7 +65,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &58198362386416840
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -80,6 +81,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &95484411199466404
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650012153279584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7edba885cee7fc14189b796ed0fbca7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114430629605324404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,8 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRb: {fileID: 50923905285501890}
   impulso: {x: 3, y: 0}
-  speed: {x: 0, y: 0}
-  direction: 0
+  direction: {x: 1, y: 0}
+  speed: 200
 --- !u!212 &212590228523707526
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -129,7 +147,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3d9359888bcac5d45ab4f680d9cce985, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7da016f1b48071a4c9460270bc6a2254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

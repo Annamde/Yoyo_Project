@@ -23,6 +23,6 @@ public class generatorScript : MonoBehaviour {
 	void BrickCreator()
 	{
 		b = Instantiate (brick);
-		b.transform.position = this.transform.position;
+		b.transform.position = new Vector3(Random.Range(this.transform.position.x-3, this.transform.position.x+3), this.transform.position.y, this.transform.position.z);
 	}
 }
