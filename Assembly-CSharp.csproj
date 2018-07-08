@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\BrickScript.cs" />
+     <Compile Include="Assets\_Scripts\canvasScript.cs" />
      <Compile Include="Assets\_Scripts\GameManager.cs" />
      <Compile Include="Assets\_Scripts\generatorScript.cs" />
      <Compile Include="Assets\_Scripts\myGrid.cs" />
