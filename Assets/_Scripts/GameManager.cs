@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour {
 	private float count;
 	public static int score;
 	public Text scoreText;
+	public Canvas canvasGO;
 
 	// Use this for initialization
 	void Start()
 	{
 		count = 0;
+		canvasGO.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -31,5 +33,10 @@ public class GameManager : MonoBehaviour {
 	void SetScoreText()
 	{
 		scoreText.text = score.ToString();
+	}
+	public static void GameOver(Canvas canvas)
+	{
+		canvas.enabled = true;
+		Time.timeScale = 0;
 	}
 }

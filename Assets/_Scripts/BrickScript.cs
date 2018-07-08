@@ -32,10 +32,10 @@ public class BrickScript : MonoBehaviour {
 		if (currentNode == nextNode) {
 			nextNode = grid.GetNeighboursDown (currentNode);
 			nextPos = nextNode.worldPosition;
-			Debug.Log ("EEEEEEEOOOOOOO");
+
 		}
 		transform.position = Vector3.MoveTowards (transform.position, nextPos, speed * Time.deltaTime);
-		Debug.Log (nextPos+transform.position);
+		//Debug.Log (nextPos+transform.position);
 	}
 
 	void Die()
@@ -47,6 +47,10 @@ public class BrickScript : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Out") {
 			Die ();
+		}
+		if (col.gameObject.tag == "Yoyo") {
+			Die ();
+			//en un futuro hacer que los brick parpaden o hacer algo guay para que desaparezcan
 		}
 	}
 }

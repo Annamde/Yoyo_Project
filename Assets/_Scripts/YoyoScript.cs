@@ -6,7 +6,9 @@ public class YoyoScript : MonoBehaviour {
 
 	public Rigidbody2D myRb;
 	public Vector2 impulso, direction;
+	public Vector3 empujon;
 	public int speed;
+	public Canvas gameOver;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +28,17 @@ public class YoyoScript : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Limit") {
 			direction.x *= -1;
+		}
+	}
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.tag == "Brick") {
+			print ("HE TOCADUUUUUUUU");
+			//myRb.AddForce (empujon);
+			transform.position+=empujon;
+		}
+		if (col.gameObject.tag == "Out") {
+			GameManager.GameOver (gameOver);
 		}
 	}
 }

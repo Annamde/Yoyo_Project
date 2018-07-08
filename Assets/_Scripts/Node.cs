@@ -7,6 +7,9 @@ public class Node {
 	public int gridPositionX;
 	public int gridPositionY;
 	public int size;
+	/*public float gridPositionX;
+	public float gridPositionY;
+	public float size;*/
 	public Vector3 worldPosition;
 	public bool isTransitable = true;
 

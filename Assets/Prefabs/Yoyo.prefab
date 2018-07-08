@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 95484411199466404}
   m_Layer: 0
   m_Name: Yoyo
-  m_TagString: Untagged
+  m_TagString: Yoyo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,9 @@ MonoBehaviour:
   myRb: {fileID: 50923905285501890}
   impulso: {x: 3, y: 0}
   direction: {x: 1, y: 0}
-  speed: 200
+  empujon: {x: 0, y: -1, z: 0}
+  speed: 150
+  gameOver: {fileID: 0}
 --- !u!212 &212590228523707526
 SpriteRenderer:
   m_ObjectHideFlags: 1

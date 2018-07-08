@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class myGrid : MonoBehaviour { //el objeto en la escena que se va encargar de gestionar todos los objetos por su cuadricula
-
-
+public class myGrid : MonoBehaviour { 
 	public int size_x, size_y;
 
 	public Node[,] grid; //da igual que sea public, no lo va a mostrar por el inspector
 	//guarda en memoria el espacio
 
 	public int node_size = 1;
+	//public float node_size;
 
 	void Awake ()
 	{
@@ -20,14 +19,12 @@ public class myGrid : MonoBehaviour { //el objeto en la escena que se va encarga
 
 	public void GenerateGrid()
 	{
-		grid = new Node[(int)size_x, (int)size_y]; //esta creando una array de nodos que es la grid
+		grid = new Node[size_x, size_y]; 
 
 		//for tab tab te crea el for solo
 		for (int i = 0; i < size_x; i++) {
 			for (int j = 0; j < size_y; j++) {
-				/*grid [i, j] = new Node ();
-				grid [i, j].gridPositionX = i;
-				grid [i, j].gridPositionY = j;*/
+				
 
 				Vector3 nodePosition = new Vector3 (node_size * 0.5f + i * node_size, node_size * 0.5f + j * node_size, 0);
 				Vector3 worldNodePosition = transform.position + nodePosition;
@@ -41,14 +38,7 @@ public class myGrid : MonoBehaviour { //el objeto en la escena que se va encarga
 						Debug.Log (i +" "+k);
 					}
 				}
-
-				//bool isTransitable = true;
-				/*if (colliders.Length > 0)
-					isTransitable = false;*/
-
-				grid [i, j] = new Node (i, j, node_size, worldNodePosition, isTransitable); //Esta linea hace lo mismo que las 3 de arriba pero mejor
-				//Hay que sumarle la posicion de donde esta situada la grid para que al variar su posicion la de los nodes este bien
-	
+				grid [i, j] = new Node (i, j, node_size, worldNodePosition, isTransitable); 
 			}
 		}
 	}
@@ -75,7 +65,6 @@ public class myGrid : MonoBehaviour { //el objeto en la escena que se va encarga
 		
 	public Node GetNode(int x, int y)
 	{
-		//mirar si x y y son validos, si no return null
 
 		if (x < 0 || y < 0 || x > size_x || y > size_y) {
 			Debug.LogWarning ("SE HA PEDIDO UN NODO NO VALIDO en la posicion "+ x +", " + y);
@@ -88,9 +77,6 @@ public class myGrid : MonoBehaviour { //el objeto en la escena que se va encarga
 	public Node GetNodeContainingPosition(Vector3 worldPosition)
 	{
 		Vector3 localPosition = worldPosition - transform.position;
-
-		//int x = (int)localPosition.x; //lo de (int) te cambia el float (en este caso) a int/ Mathf.floor te redondea hacia abajo como lo de (int)
-		//int y = (int)localPosition.y;
 
 		int x = Mathf.FloorToInt(localPosition.x/node_size);
 		int y = Mathf.FloorToInt(localPosition.y/node_size);
@@ -131,7 +117,7 @@ public class myGrid : MonoBehaviour { //el objeto en la escena que se va encarga
 
 	public Node GetNeighboursDown(Node node)
 	{
-		Node neighbourd = GetNode (node.gridPositionX, node.gridPositionY - 1);
+		Node neighbourd = GetNode (node.gridPositionX, node.gridPositionY - node_size);
 		//print (neighbourd);
 		return neighbourd;
 	}
