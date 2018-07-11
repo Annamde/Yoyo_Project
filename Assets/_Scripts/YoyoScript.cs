@@ -22,6 +22,11 @@ public class YoyoScript : MonoBehaviour {
 			//myRb.AddForce (impulso);
 			myRb.velocity*=impulso.x;
 		}
+		foreach (Touch touch in Input.touches) {
+			if (touch.phase == TouchPhase.Began) {
+				myRb.velocity*=impulso.x;
+			}
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
@@ -33,12 +38,11 @@ public class YoyoScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.tag == "Brick") {
-			print ("HE TOCADUUUUUUUU");
 			//myRb.AddForce (empujon);
 			transform.position+=empujon;
 		}
 		if (col.gameObject.tag == "Out") {
-			GameManager.GameOver (gameOver);
+			GameManager.ActivateCanvas (gameOver);
 		}
 	}
 }

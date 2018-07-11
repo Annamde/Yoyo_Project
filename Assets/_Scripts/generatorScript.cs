@@ -12,6 +12,7 @@ public class generatorScript : MonoBehaviour {
 	void Start () 
 	{
 		InvokeRepeating ("BrickCreator",1.0f,3.0f);
+		InvokeRepeating ("BrickCreator", 75f, 2.0f);
 	}
 	
 	// Update is called once per frame

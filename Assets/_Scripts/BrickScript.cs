@@ -11,6 +11,7 @@ public class BrickScript : MonoBehaviour {
 	private Vector3 nextPos;
 	private myGrid grid;
 
+
 	// Use this for initialization
 	void Start () {
 		grid = GameManager.grid;
@@ -36,6 +37,11 @@ public class BrickScript : MonoBehaviour {
 		}
 		transform.position = Vector3.MoveTowards (transform.position, nextPos, speed * Time.deltaTime);
 		//Debug.Log (nextPos+transform.position);
+	}
+
+	void IncrementSpeed()
+	{
+		
 	}
 
 	void Die()

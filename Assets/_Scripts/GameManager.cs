@@ -6,35 +6,37 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public static myGrid grid;
-	private float count;
 	public static int score;
-	public Text scoreText;
+	public static float time;
+	public Text scoreText, puntosText;
 	public Canvas canvasGO;
+
 
 	// Use this for initialization
 	void Start()
 	{
-		count = 0;
+		time = 0;
 		canvasGO.enabled = false;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		count = count + Time.deltaTime;
-		score = (int)count;
-		SetScoreText();
+		time = time + Time.deltaTime;
+		score = (int)time;
+		SetScoreText(scoreText);
+		SetScoreText (puntosText);
 	}
 
 	public static void SetGrid(myGrid _grid)
 	{
 		grid = _grid;
 	}
-	void SetScoreText()
+	void SetScoreText(Text texto)
 	{
-		scoreText.text = score.ToString();
+		texto.text = score.ToString();
 	}
-	public static void GameOver(Canvas canvas)
+	public static void ActivateCanvas(Canvas canvas)
 	{
 		canvas.enabled = true;
 		Time.timeScale = 0;
