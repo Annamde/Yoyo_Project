@@ -17,16 +17,27 @@ public class YoyoScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (Input.touchCount);
+
 		myRb.velocity = speed*direction*Time.deltaTime;
 		if (Input.GetKey (KeyCode.Space)) {
 			//myRb.AddForce (impulso);
 			myRb.velocity*=impulso.x;
 		}
-		foreach (Touch touch in Input.touches) {
-			if (touch.phase == TouchPhase.Began) {
-				myRb.velocity*=impulso.x;
+		/*foreach (Touch touch in Input.touches) {
+			if (touch.phase == TouchPhase.Began ) { 
+				myRb.velocity*=impulso.x;//pequeño impulso hacia el lado en el que va
+				print("EEEOOOO");
+
 			}
+			if (touch.phase != TouchPhase.Ended) {
+				print ("FINIQUITAOTAOOOO");
+			}
+		}*/
+		if (Input.touchCount >= 1) {
+			myRb.velocity*=impulso.x;
 		}
+
 	}
 
 	void OnCollisionEnter2D(Collision2D col)

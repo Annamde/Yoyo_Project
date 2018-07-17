@@ -1616,21 +1616,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114430629605324404, guid: 69e79b483493cbe469bdc735c8a8ddd0,
-        type: 2}
-      propertyPath: gameOver
-      value: 
-      objectReference: {fileID: 1519103163}
-    - target: {fileID: 233596528791065528, guid: 69e79b483493cbe469bdc735c8a8ddd0,
-        type: 2}
-      propertyPath: m_ConnectedRigidBody
-      value: 
-      objectReference: {fileID: 2100151614}
     - target: {fileID: 232047525580294160, guid: 69e79b483493cbe469bdc735c8a8ddd0,
         type: 2}
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 2100151614}
+    - target: {fileID: 233596528791065528, guid: 69e79b483493cbe469bdc735c8a8ddd0,
+        type: 2}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 2100151614}
+    - target: {fileID: 114430629605324404, guid: 69e79b483493cbe469bdc735c8a8ddd0,
+        type: 2}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 1519103163}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69e79b483493cbe469bdc735c8a8ddd0, type: 2}
   m_IsPrefabParent: 0
