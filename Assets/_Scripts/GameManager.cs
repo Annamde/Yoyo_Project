@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour {
 	public static myGrid grid;
 	public static int score;
 	public static float time;
+	public static Canvas canvasGO, canvasPause;
 	public Text scoreText, puntosText;
-	public Canvas canvasGO;
 
 
 	// Use this for initialization
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	{
 		time = 0;
 		canvasGO.enabled = false;
+		canvasPause.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -26,6 +27,12 @@ public class GameManager : MonoBehaviour {
 		score = (int)time;
 		SetScoreText(scoreText);
 		SetScoreText (puntosText);
+	}
+
+	public static void LoadLevel(Canvas _canvasGO, Canvas _canvasPause)
+	{
+		canvasGO = _canvasGO;
+		canvasPause = _canvasPause;
 	}
 
 	public static void SetGrid(myGrid _grid)

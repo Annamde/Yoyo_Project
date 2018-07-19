@@ -21,9 +21,20 @@ public class canvasScript : MonoBehaviour {
 		Application.Quit ();
 	}
 
-	public void Reintentar(int index)
+	public void Restart(int index)
 	{
 		SceneManager.LoadScene (index);
 		Time.timeScale = 1;
+	}
+
+	public void Resume()
+	{
+		GameManager.canvasPause.enabled = false;
+		Time.timeScale = 1;
+	}
+
+	public void Pause()
+	{
+		GameManager.ActivateCanvas (GameManager.canvasPause);
 	}
 }

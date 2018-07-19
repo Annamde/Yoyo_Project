@@ -8,7 +8,6 @@ public class YoyoScript : MonoBehaviour {
 	public Vector2 impulso, direction;
 	public Vector3 empujon;
 	public int speed;
-	public Canvas gameOver;
 
 	// Use this for initialization
 	void Start () {
@@ -57,7 +56,7 @@ public class YoyoScript : MonoBehaviour {
 			direction.x *= -1;
 		}
 		if (col.gameObject.tag == "Out") {
-			GameManager.ActivateCanvas (gameOver);
+			GameManager.ActivateCanvas (GameManager.canvasGO);
 		}
 	}
 }
