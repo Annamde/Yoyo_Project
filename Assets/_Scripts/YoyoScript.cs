@@ -51,6 +51,10 @@ public class YoyoScript : MonoBehaviour {
 		if (col.gameObject.tag == "Brick") {
 			//myRb.AddForce (empujon);
 			transform.position+=empujon;
+			Destroy (col.gameObject);
+		}
+		if (col.gameObject.tag == "Limit") {
+			direction.x *= -1;
 		}
 		if (col.gameObject.tag == "Out") {
 			GameManager.ActivateCanvas (gameOver);

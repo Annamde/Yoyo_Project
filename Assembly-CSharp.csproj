@@ -58,9 +58,6 @@
      <Compile Include="Assets\_Scripts\myGrid.cs" />
      <Compile Include="Assets\_Scripts\Node.cs" />
      <Compile Include="Assets\_Scripts\YoyoScript.cs" />
- <Reference Include="Assembly-CSharp-firstpass">
- <HintPath>D:/annad/Treballs/Altres/Proyecto_Yoyo/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

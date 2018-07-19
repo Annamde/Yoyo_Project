@@ -6,7 +6,6 @@ public class BrickScript : MonoBehaviour {
 
 	public Node currentNode, nextNode;
 	public float speed;
-	public Rigidbody2D myRb;
 
 	private Vector3 nextPos;
 	private myGrid grid;
@@ -55,7 +54,7 @@ public class BrickScript : MonoBehaviour {
 			Die ();
 		}
 		if (col.gameObject.tag == "Yoyo") {
-			Die ();
+			//Die ();
 			//en un futuro hacer que los brick parpaden o hacer algo guay para que desaparezcan
 		}
 	}
