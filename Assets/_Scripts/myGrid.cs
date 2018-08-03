@@ -21,7 +21,6 @@ public class myGrid : MonoBehaviour {
 	{
 		grid = new Node[size_x, size_y]; 
 
-		//for tab tab te crea el for solo
 		for (int i = 0; i < size_x; i++) {
 			for (int j = 0; j < size_y; j++) {
 				
@@ -38,7 +37,7 @@ public class myGrid : MonoBehaviour {
 						Debug.Log (i +" "+k);
 					}
 				}
-				grid [i, j] = new Node (i, j, node_size, worldNodePosition, isTransitable); 
+				grid [i, j] = new Node (i, j, node_size, worldNodePosition, isTransitable, false); 
 			}
 		}
 	}

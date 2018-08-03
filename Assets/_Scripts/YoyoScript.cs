@@ -5,7 +5,7 @@ using UnityEngine;
 public class YoyoScript : MonoBehaviour {
 
 	public Rigidbody2D myRb;
-	public Vector2 impulso, direction;
+	public Vector2 impulso, direction, impulsoRight, impulsoLeft;
 	public Vector3 empujon;
 	public int speed;
 
@@ -16,9 +16,13 @@ public class YoyoScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (Input.touchCount);
+		Move ();
+	}
 
+	void Move()
+	{
 		myRb.velocity = speed*direction*Time.deltaTime;
+
 		if (Input.GetKey (KeyCode.Space)) {
 			//myRb.AddForce (impulso);
 			myRb.velocity*=impulso.x;
@@ -33,10 +37,29 @@ public class YoyoScript : MonoBehaviour {
 				print ("FINIQUITAOTAOOOO");
 			}
 		}*/
-		if (Input.touchCount >= 1) {
+		if (Input.touchCount == 1) {
 			myRb.velocity*=impulso.x;
+			//Debug.Log (Input.GetTouch(0).position);
 		}
+		//print(myRb.velocity);
+	}
 
+	public void RightMove()
+	{
+		if (Input.touchCount == 1) {
+			//myRb.velocity *= impulsoRight.x;
+			//direction = Vector2.right;
+			direction.x = 1;
+		}
+	}
+
+	public void LeftMove()
+	{
+		if (Input.touchCount == 1) {
+			//myRb.velocity *= impulsoLeft.x;
+			//direction=Vector2.left;
+			direction.x = -1;
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
@@ -48,11 +71,12 @@ public class YoyoScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.tag == "Brick") {
-			//myRb.AddForce (empujon);
+			//myRb.velocity += empujon;
 			transform.position+=empujon;
 			Destroy (col.gameObject);
 		}
 		if (col.gameObject.tag == "Limit") {
+			//transform.position = 
 			direction.x *= -1;
 		}
 		if (col.gameObject.tag == "Out") {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BrickScript : MonoBehaviour {
 
-	public Node currentNode, nextNode;
+	public Node currentNode, nextNode, pastNode;
 	public float speed;
 
 	private Vector3 nextPos;
@@ -18,10 +18,14 @@ public class BrickScript : MonoBehaviour {
 		transform.position = currentNode.worldPosition;
 		nextNode = grid.GetNeighboursDown (currentNode);
 		nextPos = nextNode.worldPosition;
+		currentNode.Grita ();
+		CorrectPosition ();
+		currentNode.isFull = true;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		Movement ();
 	}
 
@@ -29,13 +33,13 @@ public class BrickScript : MonoBehaviour {
 	{
 		//transform.position = nextNode.worldPosition;
 		currentNode = grid.GetNodeContainingPosition (transform.position);
+		currentNode.isFull = false;
 		if (currentNode == nextNode) {
+			currentNode.isFull = false;
 			nextNode = grid.GetNeighboursDown (currentNode);
 			nextPos = nextNode.worldPosition;
-
 		}
 		transform.position = Vector3.MoveTowards (transform.position, nextPos, speed * Time.deltaTime);
-		//Debug.Log (nextPos+transform.position);
 	}
 
 	void IncrementSpeed()
@@ -43,7 +47,15 @@ public class BrickScript : MonoBehaviour {
 		
 	}
 
-	void Die()
+	public void CorrectPosition()
+	{
+		if (currentNode.isFull == true) {
+			Die ();
+			//print ("malaaa posicioon");
+		}
+	}
+
+	public void Die()
 	{
 		Destroy (this.gameObject);
 	}

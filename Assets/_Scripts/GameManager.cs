@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	public static int score;
 	public static float time;
 	public static Canvas canvasGO, canvasPause;
+	public static YoyoScript yoyo;
 	public Text scoreText, puntosText;
 
 
@@ -29,10 +30,11 @@ public class GameManager : MonoBehaviour {
 		SetScoreText (puntosText);
 	}
 
-	public static void LoadLevel(Canvas _canvasGO, Canvas _canvasPause)
+	public static void LoadLevel(Canvas _canvasGO, Canvas _canvasPause, YoyoScript _yoyo)
 	{
 		canvasGO = _canvasGO;
 		canvasPause = _canvasPause;
+		yoyo = _yoyo;
 	}
 
 	public static void SetGrid(myGrid _grid)

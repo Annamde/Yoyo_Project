@@ -5,9 +5,10 @@ using UnityEngine;
 public class LoadLevelScript : MonoBehaviour {
 
 	public Canvas canvasGO, canvasPause;
+	public YoyoScript yoyo;
 
 	void Awake()
 	{
-		GameManager.LoadLevel (canvasGO,canvasPause);
+		GameManager.LoadLevel (canvasGO,canvasPause,yoyo);
 	}
 }
