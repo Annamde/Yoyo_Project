@@ -613,7 +613,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &456749098
 GameObject:
@@ -1151,7 +1151,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4078013292864608, guid: 6243b248091ab444d934eff00646c94c, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6243b248091ab444d934eff00646c94c, type: 2}
@@ -1584,6 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 114894242090570834, guid: ad26b95bfa55e954b89fe5647f84ab2e, type: 2}
+  coin: {fileID: 114468955996047014, guid: 8cda7dee83ab789448a4e4c9b459a4be, type: 2}
 --- !u!1 &1306911857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,7 +2231,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1637985684
 MonoBehaviour:
@@ -3134,7 +3135,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4127611915153246, guid: 69e79b483493cbe469bdc735c8a8ddd0, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 232047525580294160, guid: 69e79b483493cbe469bdc735c8a8ddd0,
         type: 2}

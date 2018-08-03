@@ -8,6 +8,7 @@ TagManager:
   - Out
   - Brick
   - Yoyo
+  - Coin
   layers:
   - Default
   - TransparentFX

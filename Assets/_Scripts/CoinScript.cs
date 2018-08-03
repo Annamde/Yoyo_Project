@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrickScript : ObjectScript {
+public class CoinScript : ObjectScript {
 
+	public int points;
 
 	protected override void Start () {
 		base.Start ();
@@ -20,8 +21,8 @@ public class BrickScript : ObjectScript {
 			Die ();
 		}
 		if (col.gameObject.tag == "Yoyo") {
-			//Die ();
-			//en un futuro hacer que los brick parpaden o hacer algo guay para que desaparezcan
+			GameManager.coins += points;
+			Die ();
 		}
 	}
 }

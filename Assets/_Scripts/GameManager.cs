@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public static myGrid grid;
-	public static int score;
-	public static float time;
+	public static int score, coins;
+	public static float time=0;
 	public static Canvas canvasGO, canvasPause;
 	public static YoyoScript yoyo;
 	public Text scoreText, puntosText;
@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-		time = 0;
 		canvasGO.enabled = false;
 		canvasPause.enabled = false;
 	}
@@ -24,8 +23,8 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		time = time + Time.deltaTime;
-		score = (int)time;
+		time += Time.deltaTime;
+		score = (int)time + coins;
 		SetScoreText(scoreText);
 		SetScoreText (puntosText);
 	}
