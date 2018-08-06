@@ -6,8 +6,11 @@ public class YoyoScript : MonoBehaviour {
 
 	public Rigidbody2D myRb;
 	public Vector2 impulso, direction, impulsoRight, impulsoLeft;
-	public Vector3 empujon;
+	public Vector3 empujon, positionInitial;
 	public int speed;
+	public float duration;
+
+	private bool muevete;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +20,9 @@ public class YoyoScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Move ();
+		if (muevete) {
+			StartCoroutine (Empujon (positionInitial, duration));
+		}
 	}
 
 	void Move()
@@ -39,9 +45,7 @@ public class YoyoScript : MonoBehaviour {
 		}*/
 		if (Input.touchCount == 1) {
 			myRb.velocity*=impulso.x;
-			//Debug.Log (Input.GetTouch(0).position);
 		}
-		//print(myRb.velocity);
 	}
 
 	public void RightMove()
@@ -62,6 +66,20 @@ public class YoyoScript : MonoBehaviour {
 		}
 	}
 
+	IEnumerator Empujon (Vector3 positionInitial, float duration)
+	{
+		float counter = 0.0f;
+
+		if (transform.position.y > positionInitial.y - 0.9f) {
+			transform.position = new Vector3 (transform.position.x, transform.position.y - 0.1f, transform.position.z);
+			counter += Time.deltaTime;
+		} else {
+			muevete = false;
+		}
+		yield return null;
+
+	}
+
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.gameObject.tag == "Limit") {
@@ -71,12 +89,13 @@ public class YoyoScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.tag == "Brick") {
-			//myRb.velocity += empujon;
-			transform.position+=empujon;
+			//transform.position+=empujon;
+			muevete = true;
+			positionInitial = transform.position;
+			print (positionInitial);
 			Destroy (col.gameObject);
 		}
 		if (col.gameObject.tag == "Limit") {
-			//transform.position = 
 			direction.x *= -1;
 		}
 		if (col.gameObject.tag == "Out") {
