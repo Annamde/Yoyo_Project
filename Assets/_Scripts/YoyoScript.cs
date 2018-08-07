@@ -9,6 +9,7 @@ public class YoyoScript : MonoBehaviour {
 	public Vector3 empujon, positionInitial;
 	public int speed;
 	public float duration;
+	public SpriteRenderer mySprite;
 
 	private bool muevete;
 
@@ -88,12 +89,18 @@ public class YoyoScript : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.tag == "Brick") {
-			//transform.position+=empujon;
-			muevete = true;
-			positionInitial = transform.position;
-			print (positionInitial);
-			Destroy (col.gameObject);
+		if (col.gameObject.tag == "Brick")
+		{
+			//print (col.bounds.min.y+"   "+this.transform.position.y +"  "+ mySprite.size.y/2);
+			//print (col.bounds.min.y+"   "+mySprite.bounds.center.y +"  "+ mySprite.bounds.size.y/2);
+			if (col.bounds.min.y >= this.transform.position.y + mySprite.size.y/2 -0.1f) 
+			{
+				//transform.position+=empujon;
+				muevete = true;
+				positionInitial = transform.position;
+				print (positionInitial);
+				Destroy (col.gameObject);
+			}
 		}
 		if (col.gameObject.tag == "Limit") {
 			direction.x *= -1;
