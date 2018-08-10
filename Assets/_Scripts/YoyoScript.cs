@@ -8,10 +8,11 @@ public class YoyoScript : MonoBehaviour {
 	public Vector2 impulso, direction, impulsoRight, impulsoLeft;
 	public Vector3 empujon, positionInitial;
 	public int speed;
-	public float duration;
 	public SpriteRenderer mySprite;
+	public bool right, left;
 
 	private bool muevete;
+	private float counterStay;
 
 	// Use this for initialization
 	void Start () {
@@ -22,8 +23,10 @@ public class YoyoScript : MonoBehaviour {
 	void Update () {
 		Move ();
 		if (muevete) {
-			StartCoroutine (Empujon (positionInitial, duration));
+			StartCoroutine (Empujon (positionInitial));
 		}
+		//print (myRb.velocity);
+		Confirmation();
 	}
 
 	void Move()
@@ -31,7 +34,6 @@ public class YoyoScript : MonoBehaviour {
 		myRb.velocity = speed*direction*Time.deltaTime;
 
 		if (Input.GetKey (KeyCode.Space)) {
-			//myRb.AddForce (impulso);
 			myRb.velocity*=impulso.x;
 		}
 		/*foreach (Touch touch in Input.touches) {
@@ -44,8 +46,32 @@ public class YoyoScript : MonoBehaviour {
 				print ("FINIQUITAOTAOOOO");
 			}
 		}*/
-		if (Input.touchCount == 1) {
-			myRb.velocity*=impulso.x;
+		if (Input.touchCount == 1 || Input.GetMouseButton(0)) {
+			//myRb.velocity *= -impulso.x;
+			if (right) {
+				left = false;
+				//si es positivo seguir asi, si es falso cambiar a positivo
+				if (myRb.velocity.x >= 0) {
+					myRb.velocity *= impulso.x;
+				}
+				if (myRb.velocity.x < 0) {
+					myRb.velocity *= -impulso.x;
+				}
+			}
+			else if (left) {
+				right = false;
+				//si es negativo impulsar hacia alli, si es positivo cambiar a negativo
+				if (myRb.velocity.x >= 0) {
+					myRb.velocity *= -impulso.x;
+				}
+				if (myRb.velocity.x < 0) {
+					myRb.velocity *= impulso.x;
+				}
+			}
+		}
+		if (Input.touchCount == 0) {
+			right = false;
+			left = false;
 		}
 	}
 
@@ -54,7 +80,8 @@ public class YoyoScript : MonoBehaviour {
 		if (Input.touchCount == 1) {
 			//myRb.velocity *= impulsoRight.x;
 			//direction = Vector2.right;
-			direction.x = 1;
+			//direction.x = 1;
+			//transform.position += new Vector3 (transform.position.x + 0.0001f, 0, 0);
 		}
 	}
 
@@ -63,17 +90,22 @@ public class YoyoScript : MonoBehaviour {
 		if (Input.touchCount == 1) {
 			//myRb.velocity *= impulsoLeft.x;
 			//direction=Vector2.left;
-			direction.x = -1;
+			//direction.x = -1;
+			//transform.position += new Vector3 (transform.position.x - 0.0001f,0, 0);
 		}
 	}
 
-	IEnumerator Empujon (Vector3 positionInitial, float duration)
+	public void Confirmation()
 	{
-		float counter = 0.0f;
+		if (counterStay > 0.3f) {
+			direction *= -1;
+		}
+	}
 
+	IEnumerator Empujon (Vector3 positionInitial)
+	{
 		if (transform.position.y > positionInitial.y - 0.9f) {
 			transform.position = new Vector3 (transform.position.x, transform.position.y - 0.1f, transform.position.z);
-			counter += Time.deltaTime;
 		} else {
 			muevete = false;
 		}
@@ -84,7 +116,15 @@ public class YoyoScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.gameObject.tag == "Limit") {
-			direction.x *= -1;
+			right = false;
+			left = false;
+			if (direction.x == 1) {
+				direction.x = -1;
+			} else if (direction.x == -1) {
+				direction.x = 1;
+			}
+
+			//direction.x *= -1;
 		}
 	}
 	void OnTriggerEnter2D(Collider2D col)
@@ -98,15 +138,32 @@ public class YoyoScript : MonoBehaviour {
 				//transform.position+=empujon;
 				muevete = true;
 				positionInitial = transform.position;
-				print (positionInitial);
 				Destroy (col.gameObject);
 			}
 		}
 		if (col.gameObject.tag == "Limit") {
-			direction.x *= -1;
+			if (direction.x == 1) {
+				direction.x = -1;
+			} else if (direction.x == -1) {
+				direction.x = 1;
+			}
+
+			//direction.x *= -1;
 		}
 		if (col.gameObject.tag == "Out") {
 			GameManager.ActivateCanvas (GameManager.canvasGO);
+		}
+	}
+	void OnCollisionStay2D(Collision2D col)
+	{
+		if (col.gameObject.tag == "Limit") {
+			counterStay += Time.deltaTime;
+		}
+	}
+	void OnCollisionExit2D(Collision2D col)
+	{
+		if (col.gameObject.tag == "Limit") {
+			counterStay = 0;
 		}
 	}
 }

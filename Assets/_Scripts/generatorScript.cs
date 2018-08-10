@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class generatorScript : MonoBehaviour {
 
-	public BrickScript brick;
+	public BrickScript brick, brick2;
 	public CoinScript coin;
 
 	private ObjectScript b;
-
+	private int rand;
 
 	// Use this for initialization
 	void Start () 
@@ -26,10 +26,17 @@ public class generatorScript : MonoBehaviour {
 
 	void BrickCreator()
 	{
-		b = Instantiate (brick);
+		rand = Random.Range (1, 3);
+		switch (rand) {
+		case 1:
+			b = Instantiate (brick);
+			break;
+		case 2:
+			b = Instantiate (brick2);
+			break;
+		}
 
 		b.transform.position = new Vector3(Random.Range(this.transform.position.x-2, this.transform.position.x+2), this.transform.position.y, this.transform.position.z);
-
 	}
 
 	void CoinCreator()

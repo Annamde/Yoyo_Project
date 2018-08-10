@@ -30,16 +30,20 @@ public class MovementScript : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
+		//GameManager.yoyo.right = false;
+		//GameManager.yoyo.left = false;
 		IsHolding = false;
 	}
 
 	public void RightButton()
 	{
+		GameManager.yoyo.right = true;
 		GameManager.yoyo.RightMove ();
 	}
 
 	public void LeftButton()
 	{
+		GameManager.yoyo.left = true;
 		GameManager.yoyo.LeftMove ();
 	}
 }

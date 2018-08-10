@@ -1584,6 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brick: {fileID: 114894242090570834, guid: ad26b95bfa55e954b89fe5647f84ab2e, type: 2}
+  brick2: {fileID: 114597806743023062, guid: 63506225cd82a11428c2befb920415dc, type: 2}
   coin: {fileID: 114468955996047014, guid: 8cda7dee83ab789448a4e4c9b459a4be, type: 2}
 --- !u!1 &1306911857
 GameObject:
@@ -3182,6 +3183,11 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 95484411199466404, guid: 69e79b483493cbe469bdc735c8a8ddd0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 58198362386416840, guid: 69e79b483493cbe469bdc735c8a8ddd0,
         type: 2}
       propertyPath: m_Enabled
       value: 1
