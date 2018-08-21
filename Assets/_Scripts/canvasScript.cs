@@ -24,7 +24,10 @@ public class canvasScript : MonoBehaviour {
 	public void Restart(int index)
 	{
 		SceneManager.LoadScene (index);
+
 		Time.timeScale = 1;
+		GameManager.time = 0;
+		GameManager.coins = 0;
 	}
 
 	public void Resume()

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 	public static float time=0;
 	public static Canvas canvasGO, canvasPause;
 	public static YoyoScript yoyo;
-	public Text scoreText, puntosText;
+	public Text scoreText, puntosCanvasText, coinsText, coinsCanvasText;
 
 
 	// Use this for initialization
@@ -24,9 +24,11 @@ public class GameManager : MonoBehaviour {
 	void Update()
 	{
 		time += Time.deltaTime;
-		score = (int)time + coins;
-		SetScoreText(scoreText);
-		SetScoreText (puntosText);
+		score = (int)time;
+		SetText(scoreText, score);
+		SetText(puntosCanvasText, score);
+		SetText (coinsText, coins);
+		SetText (coinsCanvasText, coins);
 	}
 
 	public static void LoadLevel(Canvas _canvasGO, Canvas _canvasPause, YoyoScript _yoyo)
@@ -40,9 +42,9 @@ public class GameManager : MonoBehaviour {
 	{
 		grid = _grid;
 	}
-	void SetScoreText(Text texto)
+	void SetText(Text texto, int puntos)
 	{
-		texto.text = score.ToString();
+		texto.text = puntos.ToString();
 	}
 	public static void ActivateCanvas(Canvas canvas)
 	{

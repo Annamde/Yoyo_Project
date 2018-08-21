@@ -5,18 +5,19 @@ using UnityEngine;
 public class YoyoScript : MonoBehaviour {
 
 	public Rigidbody2D myRb;
-	public Vector2 impulso, direction, impulsoRight, impulsoLeft;
+	public Vector2 impulso, direction;
 	public Vector3 empujon, positionInitial;
-	public int speed;
+	public int speed, maxSpeed;
 	public SpriteRenderer mySprite;
 	public bool right, left;
 
 	private bool muevete;
 	private float counterStay;
+	private int initialSpeed;
 
 	// Use this for initialization
 	void Start () {
-		
+		initialSpeed = speed;
 	}
 	
 	// Update is called once per frame
@@ -26,28 +27,25 @@ public class YoyoScript : MonoBehaviour {
 			StartCoroutine (Empujon (positionInitial));
 		}
 		//print (myRb.velocity);
-		Confirmation();
+		//print(speed);
+		RegularDireccion();
 	}
 
 	void Move()
 	{
 		myRb.velocity = speed*direction*Time.deltaTime;
+		Impulse ();
 
+	}
+
+	void Impulse()
+	{
 		if (Input.GetKey (KeyCode.Space)) {
 			myRb.velocity*=impulso.x;
 		}
-		/*foreach (Touch touch in Input.touches) {
-			if (touch.phase == TouchPhase.Began ) { 
-				myRb.velocity*=impulso.x;//pequeño impulso hacia el lado en el que va
-				print("EEEOOOO");
 
-			}
-			if (touch.phase != TouchPhase.Ended) {
-				print ("FINIQUITAOTAOOOO");
-			}
-		}*/
 		if (Input.touchCount == 1 || Input.GetMouseButton(0)) {
-			//myRb.velocity *= -impulso.x;
+			speed = maxSpeed;
 			if (right) {
 				left = false;
 				//si es positivo seguir asi, si es falso cambiar a positivo
@@ -69,13 +67,15 @@ public class YoyoScript : MonoBehaviour {
 				}
 			}
 		}
-		if (Input.touchCount == 0) {
+		if (Input.touchCount == 0) { //no funciona con el raton recuerda
 			right = false;
 			left = false;
+			speed = initialSpeed;
 		}
 	}
 
-	public void RightMove()
+	//BOTONES QUE YA NO UTILIZO
+	/*public void RightMove()
 	{
 		if (Input.touchCount == 1) {
 			//myRb.velocity *= impulsoRight.x;
@@ -93,15 +93,21 @@ public class YoyoScript : MonoBehaviour {
 			//direction.x = -1;
 			//transform.position += new Vector3 (transform.position.x - 0.0001f,0, 0);
 		}
-	}
-
-	public void Confirmation()
+	}*/
+	/// <summary>
+	/// Regulars the direccion.
+	/// </summary>
+	public void RegularDireccion()
 	{
-		if (counterStay > 0.3f) {
+		if (counterStay > 0.2f) {
 			direction *= -1;
 		}
 	}
 
+	/// <summary>
+	/// Empujon the specified positionInitial.
+	/// </summary>
+	/// <param name="positionInitial">Position initial.</param>
 	IEnumerator Empujon (Vector3 positionInitial)
 	{
 		if (transform.position.y > positionInitial.y - 0.9f) {
@@ -113,6 +119,11 @@ public class YoyoScript : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Raises the collision enter2 d event.
+	/// </summary>
+	/// <param name="col">Col.</param>
+
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.gameObject.tag == "Limit") {
@@ -123,8 +134,6 @@ public class YoyoScript : MonoBehaviour {
 			} else if (direction.x == -1) {
 				direction.x = 1;
 			}
-
-			//direction.x *= -1;
 		}
 	}
 	void OnTriggerEnter2D(Collider2D col)

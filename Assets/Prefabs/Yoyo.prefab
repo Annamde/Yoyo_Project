@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1650012153279584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.05066, y: 0.47191998, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,15 +109,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRb: {fileID: 50923905285501890}
-  impulso: {x: 3, y: 0}
+  impulso: {x: 1, y: 0}
   direction: {x: 1, y: 0}
-  impulsoRight: {x: 0, y: 0}
-  impulsoLeft: {x: 0, y: 0}
   empujon: {x: 0, y: -1, z: 0}
   positionInitial: {x: 0, y: 0, z: 0}
   speed: 150
-  duration: 2
+  maxSpeed: 200
   mySprite: {fileID: 212590228523707526}
+  right: 0
+  left: 0
 --- !u!212 &212590228523707526
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -178,5 +178,5 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 10.061733
+  m_Distance: 5.67
   m_MaxDistanceOnly: 0
