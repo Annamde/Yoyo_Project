@@ -57,7 +57,9 @@
      <Compile Include="Assets\_Scripts\GameManager.cs" />
      <Compile Include="Assets\_Scripts\generatorScript.cs" />
      <Compile Include="Assets\_Scripts\LoadLevelScript.cs" />
+     <Compile Include="Assets\_Scripts\LoadMenuScript.cs" />
      <Compile Include="Assets\_Scripts\MovementScript.cs" />
+     <Compile Include="Assets\_Scripts\musicButtonScript.cs" />
      <Compile Include="Assets\_Scripts\myGrid.cs" />
      <Compile Include="Assets\_Scripts\Node.cs" />
      <Compile Include="Assets\_Scripts\ObjectScript.cs" />

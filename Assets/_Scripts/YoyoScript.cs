@@ -22,12 +22,12 @@ public class YoyoScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Move ();
+		if (GameManager.canvasGO.enabled == false) {
+			Move ();
+		}
 		if (muevete) {
 			StartCoroutine (Empujon (positionInitial));
 		}
-		//print (myRb.velocity);
-		//print(speed);
 		RegularDireccion();
 	}
 

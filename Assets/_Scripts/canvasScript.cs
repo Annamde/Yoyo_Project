@@ -2,23 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class canvasScript : MonoBehaviour {
 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public void Exit()
 	{
-		Application.Quit ();
+		//Application.Quit ();
+		GameManager.time=0;
+		GameManager.coins = 0;
+		SceneManager.LoadScene(0);
 	}
 
 	public void Restart(int index)
@@ -40,4 +34,30 @@ public class canvasScript : MonoBehaviour {
 	{
 		GameManager.ActivateCanvas (GameManager.canvasPause);
 	}
+
+	public void Activate(Canvas canvas)
+	{
+		GameManager.ActivateCanvas (canvas);
+	}
+
+	public void Return(Canvas canvas)
+	{
+		GameManager.CloseCanvas (canvas);
+	}
+	public void TapToPlay()
+	{
+		SceneManager.LoadScene (1);
+	}
+
+	public void yemyemPlay(Button myButton)
+	{
+		if (GameManager.yemyem <= 0) {
+			myButton.gameObject.SetActive (false);
+		} else {
+			GameManager.yemyem--;
+			SceneManager.LoadScene (1);
+			Time.timeScale = 1;
+		}
+	}
+
 }
